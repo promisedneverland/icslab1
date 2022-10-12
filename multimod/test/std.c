@@ -7,7 +7,7 @@ uint64_t multimod(uint64_t a,uint64_t b,uint64_t m){
 }
 int main(){
 	uint64_t a ,b, m;
-	scanf("%llu %llu %llu",&a,&b,&m);
+	scanf(U64 U64 U64,&a,&b,&m);
 	
     printf(U64 " * " U64 " mod " U64 " = " U64 "\n", a, b, m, multimod(a, b, m));
 	
