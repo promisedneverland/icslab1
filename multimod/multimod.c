@@ -12,7 +12,7 @@ uint64_t mod(uint64_t a,uint64_t b)
   }
   return a;
 }                                                           
-uint64_t add(uint64_t &res, uint64_t b, uint64_t m)
+uint64_t add(uint64_t & res, uint64_t b, uint64_t m)
 {
   res = mod(res,m);
   b = mod(b,m);
