@@ -13,17 +13,17 @@ uint64_t mod(uint64_t a,uint64_t b)
   }
   return a;
 }                                                           
-uint64_t add(uint64_t & res, uint64_t b, uint64_t m)
+uint64_t add(uint64_t *res, uint64_t b, uint64_t m)
 {
-  res = mod(res,m);
+  *res = mod(*res,m);
   b = mod(b,m);
-  if(res + b < b)
+  if(*res + b < b)
   {
-    return b - m + res;
+    return b - m + *res;
   }
   else 
   {
-    return mod((res + b), m);
+    return mod((*res + b), m);
   }
 }
 
@@ -34,7 +34,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
   {
     if(b & ((uint64_t)1<<63))
     {
-      add(res, mult(i-1,m264, m), m);
+      add(&res, mult(i-1,m264, m), m);
 
     }
     
@@ -42,7 +42,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
       b = mod(b,m);
     
   }
-  return add(res, b, m);
+  return add(&res, b, m);
 }
 
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
@@ -59,7 +59,7 @@ uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
 
   for(int i=0;i<64;i++){
     if(mask & a)
-      add(res, mult(i, b, m), m);
+      add(&res, mult(i, b, m), m);
 
     mask <<= 1;
   }
