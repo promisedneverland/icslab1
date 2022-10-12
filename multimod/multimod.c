@@ -1,17 +1,28 @@
 #include <stdint.h>
 uint64_t m264;
-
+uint64_t mod(uint64_t a,uint64_t b)
+{
+  uint64_t tmp = b;
+  while( a >= b )
+  {
+    tmp = b;
+    while(tmp < a && !(tmp & ((uint64_t)1<<63)))
+      tmp <<= 1;
+    a -= tmp;
+  }
+  return a;
+}                                                           
 uint64_t add(uint64_t res, uint64_t b, uint64_t m)
 {
-  res %= m;
-  b %= m;
+  mod(res,m);
+  mod(b,m);
   if(res + b < b)
   {
     return b - m + res;
   }
   else 
   {
-    return (res + b) % m;
+    return mod((res + b), m);
   }
 }
 
@@ -27,7 +38,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
     }
     
       b << 1;
-      b %= m;
+      mod(b,m);
     
   }
   return add(res, b, m);
@@ -36,15 +47,17 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
 
   uint64_t tmp = 0;
+  op
   tmp = ~tmp;
-  tmp %= m;
+
+  mod(tmp,m);
   tmp += 1;
   m264 = tmp;
 
   uint64_t res = 0;
   uint64_t mask = 1;
-  a %= m;
-  b %= m;
+  mod(a,m);
+  mod(b,m);
 
   for(int i=0;i<64;i++){
     if(mask & a)
