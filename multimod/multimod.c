@@ -19,7 +19,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
 }
 uint64_t add(uint64_t res, uint64_t b, uint64_t m)
 {
-  a %= m;
+  res %= m;
   b %= m;
   if(res + b < b)
   {
