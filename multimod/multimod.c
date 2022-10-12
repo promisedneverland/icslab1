@@ -45,12 +45,8 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
 }
 
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
-
-  
   uint64_t tmp = 0;
-  
   tmp = ~tmp;
-
   mod(tmp,m);
   tmp += 1;
   m264 = tmp;
