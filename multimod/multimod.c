@@ -43,7 +43,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
       b = mod(b,m);
     
   }
-  res = add(&res, b, m);
+  add(&res, b, m);
   return res;
 }
 
