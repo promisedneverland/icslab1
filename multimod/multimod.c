@@ -38,7 +38,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
 
     }
     
-      b << 1;
+      b <<= 1;
       b = mod(b,m);
     
   }
