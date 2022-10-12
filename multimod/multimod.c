@@ -6,7 +6,7 @@ uint64_t mod(uint64_t a,uint64_t b)
   while( a >= b )
   {
     tmp = b;
-    while(tmp < a && !(tmp & ((uint64_t)1<<63)))
+    while((tmp<<1) < a && !(tmp & ((uint64_t)1<<63)))
       tmp <<= 1;
     a -= tmp;
   }
