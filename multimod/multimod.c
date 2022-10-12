@@ -5,7 +5,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
   uint64_t res = 0;
   for(int i=mi;i >= 1;i--)
   {
-    if(b & (1<<63))
+    if(b & ((uint64_t)1<<63))
     {
       add(res, mult(i-1,m264, m), m);
 
