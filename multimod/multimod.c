@@ -1,5 +1,20 @@
 #include <stdint.h>
 uint64_t m264;
+
+uint64_t add(uint64_t res, uint64_t b, uint64_t m)
+{
+  res %= m;
+  b %= m;
+  if(res + b < b)
+  {
+    return b - m + res;
+  }
+  else 
+  {
+    return (res + b) % m;
+  }
+}
+
 uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
 {
   uint64_t res = 0;
@@ -17,19 +32,7 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
   }
   return add(res, b, m);
 }
-uint64_t add(uint64_t res, uint64_t b, uint64_t m)
-{
-  res %= m;
-  b %= m;
-  if(res + b < b)
-  {
-    return b - m + res;
-  }
-  else 
-  {
-    return (res + b) % m;
-  }
-}
+
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
   uint64_t tmp = 0;
   tmp = ~tmp;
