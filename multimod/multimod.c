@@ -13,17 +13,18 @@ uint64_t mod(uint64_t a,uint64_t b)
   }
   return a;
 }                                                           
-uint64_t add(uint64_t *res, uint64_t b, uint64_t m)
+void add(uint64_t *res, uint64_t b, uint64_t m)
 {
   *res = mod(*res,m);
   b = mod(b,m);
   if(*res + b < b)
   {
-    return b - m + *res;
+    *res = b - m + *res;
   }
   else 
   {
-    return mod((*res + b), m);
+    *res = mod((*res + b), m);
+
   }
 }
 
@@ -42,7 +43,8 @@ uint64_t mult(uint64_t mi, uint64_t b, uint64_t m)
       b = mod(b,m);
     
   }
-  return add(&res, b, m);
+  res = add(&res, b, m);
+  return res;
 }
 
 uint64_t multimod(uint64_t a, uint64_t b, uint64_t m) {
