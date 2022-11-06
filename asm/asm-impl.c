@@ -43,7 +43,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "jne loop"
 
     :[dest] "+&r"(dest),[src] "+r" (src),[n] "+r" (n)
-    :[n] "r" (n)
+    :
     :"cc","memory"
   ); 
   return dest;
