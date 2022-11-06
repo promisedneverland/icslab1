@@ -33,6 +33,8 @@ int asm_popcnt(uint64_t x) {
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
   // return memcpy(dest, src, n);
+  unsigned char* ucdest = (unsigned char*)dest;
+  unsigned char* ucsrc = (unsigned char*)src;
   asm(
     "jmp test\n\t"
     "loop:\n\t"
@@ -42,7 +44,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "cmpb (%[src]), $0\n\t"
     "jne loop"
 
-    :[dest] "+&r"(dest),[src] "+r" (src),[n] "+r" (n)
+    :[dest] "+&r"(ucdest),[src] "+r" (ucsrc),[n] "+r" (n)
     :
     :"cc","memory"
   ); 
