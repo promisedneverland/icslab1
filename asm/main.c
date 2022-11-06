@@ -4,7 +4,7 @@
 
 int main() {
   char s[5] = {0,0,0,0,0};
-  char dest[5];
+  char d[5];
   asm_jmp_buf buf;
   int r = asm_setjmp(buf);
   if (r == 0) {
