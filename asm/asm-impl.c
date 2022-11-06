@@ -40,7 +40,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "test %[n],%[n]\n\t"
     "jz end\n\t"
     "movb (%[src]),%%cl\n\t"
-    "cmpb %%cl, $0\n\t"
+    "cmpb %%cl, %%cl\n\t"
     "movb $0,(%[dest])\n\t"
     "jz end\n\t"
     "movb (%[src]),%%cl\n\t"
