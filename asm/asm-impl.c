@@ -35,22 +35,23 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
   // return memcpy(dest, src, n);
   unsigned char* ucdest = (unsigned char*)dest;
   unsigned char* ucsrc = (unsigned char*)src;
-  asm(
+  asm volatile(
     "test:\n\t"
-    "cmpb %[n],$0\n\t"
-    "je end\n\t"
+    "test %[n],%[n]\n\t"
+    "jz end\n\t"
     "cmpb (%[src]), $0\n\t"
     "movb $0,(%[dest])\n\t"
-    "je end\n\t"
-    "movb (%[src]),(%[dest])\n\t"
+    "jz end\n\t"
+    "movb (%[src]),(%%cl)\n\t"
+    "movb (%%cl),(%[dest])\n\t"
     "incq %[src]\n\t"
     "incq %[dest]\n\t"
     "decq %[n]\n\t"
     "jmp test\n\t"
     "end:\n\t"
-    :[dest] "+&r"(ucdest),[src] "+r" (ucsrc),[n] "+r" (n)
+    :[dest] "+&S"(ucdest),[src] "+&r" (ucsrc),[n] "+&r" (n)
     :
-    :"cc","memory"
+    :"cc","memory","cl"
   ); 
   return dest;
 }
