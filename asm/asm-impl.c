@@ -36,14 +36,13 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
   unsigned char* ucdest = (unsigned char*)dest;
   unsigned char* ucsrc = (unsigned char*)src;
   asm(
-    "jmp test\n\t"
-
     "test:\n\t"
     "cmpb %[n],$0\n\t"
     "je end\n\t"
     "cmpb (%[src]), $0\n\t"
     "movb $0,(%[dest])\n\t"
     "je end\n\t"
+    "movb (%[src]),(%[dest])\n\t"
     "incq %[src]\n\t"
     "incq %[dest]\n\t"
     "decq %[n]\n\t"
