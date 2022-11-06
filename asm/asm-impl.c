@@ -19,7 +19,7 @@ int asm_popcnt(uint64_t x) {
     "addq %[mask], %[res]\n\t"
     "movq $1,%[mask]\n\t"
     "cmpq $0,%[x]\n\t"
-    "je .L1"
+    "jne .L1"
 
     :[res] "+r" (res),[mask] "=r"(mask)
     :[x] "r" (x)
