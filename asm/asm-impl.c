@@ -22,7 +22,7 @@ int asm_popcnt(uint64_t x) {
     "cmpq $0,%[x]\n\t"
     "jne .L1"
 
-    :[res] "+&r" (res),[mask] "=&r"(mask)
+    :[res] "+&r" (res),[mask] "+&r"(mask)
     :[x] "r" (x)
     :"cc"
   ); 
