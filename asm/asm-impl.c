@@ -25,7 +25,7 @@ int asm_popcnt(uint64_t x) {
 
     :[res] "+r" (res),[mask] "=r"(mask)
     :[x] "r" (x)
-    :"cc","ecx"
+    :"cc","%ecx"
   ); 
   return res; 
 }
