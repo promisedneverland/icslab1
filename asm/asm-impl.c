@@ -17,7 +17,7 @@ int asm_popcnt(uint64_t x) {
   asm(
     ".L1:\n\t"
     "andq %[x],%[mask]\n\t"
-    "movl %[mask],%ecx\n\t"
+    "movl %[mask],%%ecx\n\t"
     "addl %ecx, %[res]\n\t"
     "movq $1,%[mask]\n\t"
     "cmpq $0,%[x]\n\t"
