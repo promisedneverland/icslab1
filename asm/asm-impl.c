@@ -39,7 +39,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "incq %[src]\n\t"
     "incq %[dest]\n\t"
     "test:\n\t"
-    "cmpb (%[src]) $0\n\t"
+    "cmpb (%[src]), $0\n\t"
     "jne loop"
 
     :[dest] "+&r"(dest),[src] "+r" (src),[n] "+r" (n)
