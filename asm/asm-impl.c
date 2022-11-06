@@ -49,8 +49,8 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "decq %[n]\n\t"
     "jmp test\n\t"
     "end:\n\t"
-    :[dest] "+&S"(ucdest),[src] "+&r" (ucsrc),[n] "+&r" (n),"=m>"(*ucdest)
-    :"m>"(*ucsrc)
+    :[dest] "+&S"(ucdest),[src] "+&r" (ucsrc),[n] "+&r" (n),"=m>"(*ucdest),"+m>"(*ucsrc)
+    :
     :"cc","memory","cl"
   ); 
   return dest;
