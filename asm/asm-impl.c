@@ -13,17 +13,19 @@ int64_t asm_add(int64_t a, int64_t b) {
 int asm_popcnt(uint64_t x) {
   int res = 0;
   uint64_t mask = 1;
+
   asm(
     ".L1:\n\t"
     "andq %[x],%[mask]\n\t"
-    "addl %[mask], %[res]\n\t"
+    "movl %[mask],%ecx\n\t"
+    "addl %ecx, %[res]\n\t"
     "movq $1,%[mask]\n\t"
     "cmpq $0,%[x]\n\t"
     "je .L1"
 
     :[res] "+r" (res),[mask] "=r"(mask)
     :[x] "r" (x)
-    :"cc"
+    :"cc","ecx"
   ); 
   return res; 
 }
