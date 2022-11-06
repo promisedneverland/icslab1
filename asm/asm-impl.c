@@ -50,7 +50,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "jmp test\n\t"
     "end:\n\t"
     :[dest] "+&S"(ucdest),[src] "+&r" (ucsrc),[n] "+&r" (n),"=m>"(*ucdest)
-    :"+m>"(*ucsrc)
+    :"m>"(*ucsrc)
     :"cc","memory","cl"
   ); 
   return dest;
