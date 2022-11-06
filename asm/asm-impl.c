@@ -1,6 +1,8 @@
 #include "asm.h"
 
-
+#define inc(x) asm ("incl %[t];"\
+       : [t] "+r"(x));
+  
 int64_t asm_add(int64_t a, int64_t b) {
   asm(
     "addq %1, %0"
@@ -22,7 +24,7 @@ int asm_popcnt(uint64_t x) {
     "cmpq $0,%[x]\n\t"
     "jne .L1"
 
-    :[res] "+r" (res),[mask] "+r"(mask)
+    :[res] "+&r" (res),[mask] "+&r"(mask)
     :[x] "r" (x)
     :"cc"
   ); 
@@ -31,7 +33,20 @@ int asm_popcnt(uint64_t x) {
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
   // return memcpy(dest, src, n);
-  return NULL;
+  asm(
+    "jmp test\n\t"
+    "loop:\n\t"
+    "incq %[src]\n\t"
+    "incq %[dest]\n\t"
+    "test:\n\t"
+    "cmpb (%[src]) $0\n\t"
+    "jne loop"
+
+    :[dest] "+&r"(dest),[src] "+r" (src),[n] "+r" (n)
+    :[n] "r" (n)
+    :"cc","memory"
+  ); 
+  return dest;
 }
 
 int asm_setjmp(asm_jmp_buf env) {
