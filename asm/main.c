@@ -7,7 +7,7 @@ int main() {
   int r = asm_setjmp(buf);
   if (r == 0) {
     printf("%d",asm_add(1234, 5678) == 6912);
-    assert(asm_popcnt(0x0123456789abcdefULL) == 32);
+    printf("%d",asm_popcnt(0x0123456789abcdefULL));
     // assert(asm_popcnt(0x000000000000000fULL) == 4);
     // TODO: add more tests here.
     asm_longjmp(buf, 123);
