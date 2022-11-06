@@ -13,7 +13,7 @@ int main() {
     // assert(asm_popcnt(0x000000000000000fULL) == 4);
     // TODO: add more tests here.
     asm_memcpy(s,d,4);
-    printf("%s\n",s);
+    printf("%s\n",d);
     asm_longjmp(buf, 123);
 
   } else {
