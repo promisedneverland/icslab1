@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main() {
-  char s[5] = {0,0,0,0,0};
+  char s[5] = {1,0,0,0,0};
   char d[5];
   asm_jmp_buf buf;
   int r = asm_setjmp(buf);
