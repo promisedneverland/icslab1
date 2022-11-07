@@ -14,7 +14,7 @@ int main() {
     // TODO: add more tests here.
     asm_memcpy(&d,&s,1);
     printf("%s\n",d);
-    asm_longjmp(buf, 123);
+    // asm_longjmp(buf, 123);
 
   } else {
     assert(r == 123);
