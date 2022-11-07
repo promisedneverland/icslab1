@@ -1,7 +1,6 @@
 #include "asm.h"
 
-#define inc(x) asm ("incl %[t];"\
-       : [t] "+r"(x));
+
   
 int64_t asm_add(int64_t a, int64_t b) {
   asm(
