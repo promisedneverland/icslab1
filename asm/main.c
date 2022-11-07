@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main() {
-  char s[5] = {'1','2',0,'4','5'};
+  char s[5] = {'1','0',0,'4','5'};
   char d[5];
   asm_jmp_buf buf;
   int r = asm_setjmp(buf);
@@ -12,7 +12,7 @@ int main() {
     // printf("%d\n",asm_popcnt(0x0123456789abcdefULL));
     // assert(asm_popcnt(0x000000000000000fULL) == 4);
     // TODO: add more tests here.
-    asm_memcpy(&d,&s,5);
+    asm_memcpy(&d,&s,1);
     printf("%s\n",d);
     asm_longjmp(buf, 123);
 
