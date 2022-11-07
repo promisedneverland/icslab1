@@ -58,10 +58,12 @@ int asm_setjmp(asm_jmp_buf env) {
     "leaq (%%rip),%%rcx\n\t"
     "movq %%rcx,8(%[env])\n\t"
     "movq %%rsp,(%[env])\n\t"
+    "movl 16(%[env]),%[ret]\n\t"
     : [ret] "=r" (ret) 
     : [env] "r" (env)
     :"cc","memory","rcx"
   ); 
+  printf("ret = %d\n",ret);
   return ret;
 }
 
