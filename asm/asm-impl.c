@@ -5,8 +5,7 @@
   
 int64_t asm_add(int64_t a, int64_t b) {
   asm(
-    "addq %1, %0\n\t"
-    "ret"
+    "addq %1, %0"
     :"+r" (b)
     :"r" (a)
   ); 
@@ -23,8 +22,7 @@ int asm_popcnt(uint64_t x) {
     "addq %[mask], %[res]\n\t"
     "movq $1,%[mask]\n\t"
     "cmpq $0,%[x]\n\t"
-    "jne .L1\n\t"
-    "ret"
+    "jne .L1"
 
     :[res] "+&r" (res),[mask] "+&r"(mask)
     :[x] "r" (x)
