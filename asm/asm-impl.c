@@ -56,7 +56,7 @@ int asm_setjmp(asm_jmp_buf env) {
   int ret = 0;
   asm volatile(
     "movl %%rip,8(%[env])\n\t"
-    "movq %%rsp,(%[env])\n\t"
+    "movl %%rsp,(%[env])\n\t"
     : [ret] "=r" (ret) 
     : [env] "r" (env)
     :"cc","memory","rcx"
