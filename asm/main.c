@@ -12,11 +12,13 @@ int main() {
     // printf("%d\n",asm_popcnt(0x0123456789abcdefULL));
     // assert(asm_popcnt(0x000000000000000fULL) == 4);
     // TODO: add more tests here.
-    asm_memcpy(&d,&s,1);
-    printf("%s\n",d);
-    //asm_longjmp(buf, 123);
-
+    // asm_memcpy(&d,&s,1);
+    // printf("%s\n",d);
+    
+    printf("inif\n");
+    asm_longjmp(buf, 123);
   } else {
+    printf("inelse\n");
     assert(r == 123);
     printf("PASSED.\n");
   }
