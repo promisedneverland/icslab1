@@ -61,13 +61,21 @@ int asm_setjmp(asm_jmp_buf env) {
     "movl 16(%[env]),%[ret]\n\t"
     : [ret] "=r" (ret) 
     : [env] "r" (env)
-    :"cc","memory","rcx"
+    :"memory","rcx"
   ); 
   printf("ret = %d\n",ret);
   return ret;
 }
 
 void asm_longjmp(asm_jmp_buf env, int val) {
- 
-  return ;
+  asm volatile(
+    "movq 8(%[env]),%%rcx\n\t"
+    "movq (%[env]),%%rsp\n\t"
+    "movl %[val],16(%[env])\n\t"
+    "jmp %%rcx"
+    : [val] "+r" (val) 
+    : [env] "r" (env)
+    :"memory","rcx"
+  ); 
+  
 }
