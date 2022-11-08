@@ -6,6 +6,7 @@ int main() {
   // char s[5] = {'1','5','0','4','5'};
   // char d[5] = {0,'0',0,'4','5'};
   asm_jmp_buf buf = {};
+  buf[2] = 0;
   int r = asm_setjmp(buf);
   if (r == 0) {
     // printf("%d\n",asm_add(1234, 5678) == 6912);
