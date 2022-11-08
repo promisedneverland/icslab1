@@ -1,5 +1,5 @@
 #include "asm.h"
-#include <stdio.h>
+// #include <stdio.h>
 int64_t asm_add(int64_t a, int64_t b) {
   asm(
     "addq %1, %0"
@@ -63,7 +63,7 @@ int asm_setjmp(asm_jmp_buf env) {
     : [env] "r" (env)
     :"memory","rcx"
   ); 
-  printf("env[0] = %lld,env[1] = %lld,ret = %d\n",env[0],env[1],ret);
+  // printf("env[0] = %lld,env[1] = %lld,ret = %d\n",env[0],env[1],ret);
 
   return ret;
 }
