@@ -6,8 +6,8 @@ int main() {
   // char s[5] = {'1','5','0','4','5'};
   // char d[5] = {0,'0',0,'4','5'};
   asm_jmp_buf buf = {};
-  buf[2] = 0;
-  int r = asm_setjmp(buf);
+  int r = 1;
+  r = asm_setjmp(buf);
   if (r == 0) {
     // printf("%d\n",asm_add(1234, 5678) == 6912);
     // printf("%d\n",asm_popcnt(0x0123456789abcdefULL));
@@ -18,9 +18,11 @@ int main() {
     
     // printf("inif\n");
     asm_longjmp(buf, 123);
-  } else {
+  } 
+  else 
+  {
     // printf("inelse\n");
     assert(r == 123);
-    printf("PASSED.\n");
+    // printf("PASSED.\n");
   }
 }
