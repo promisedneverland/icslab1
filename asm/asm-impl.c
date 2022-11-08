@@ -53,8 +53,8 @@ int asm_setjmp(asm_jmp_buf env) {
   // return setjmp(env);
   int ret = 0;
   asm volatile(
-    "push %rbp\n\t"
-    "movq %rsp %rbp\n\t"
+    "push %%rbp\n\t"
+    "movq %%rsp %%rbp\n\t"
     "leaq (%%rip),%%rcx\n\t"
     "movq %%rcx,8(%[env])\n\t"
     "movq %%rsp,(%[env])\n\t"
@@ -74,8 +74,8 @@ int asm_setjmp(asm_jmp_buf env) {
 void asm_longjmp(asm_jmp_buf env, int val) {
   // printf("val=%d\n",val);
   asm volatile(
-    "push %rbp\n\t"
-    "movq %rsp %rbp\n\t"
+    "push %%rbp\n\t"
+    "movq %%rsp %%rbp\n\t"
     "movq 8(%[env]),%%rcx\n\t"
     "movq (%[env]),%%rsp\n\t"
     "movl %[val],24(%[env])\n\t"
