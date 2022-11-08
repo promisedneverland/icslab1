@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 int main() {
-  char s[5] = {'1','5','0','4','5'};
-  char d[5] = {0,'0',0,'4','5'};
+  // char s[5] = {'1','5','0','4','5'};
+  // char d[5] = {0,'0',0,'4','5'};
   asm_jmp_buf buf = {};
   int r = asm_setjmp(buf);
   if (r == 0) {
@@ -12,13 +12,13 @@ int main() {
     // printf("%d\n",asm_popcnt(0x0123456789abcdefULL));
     // assert(asm_popcnt(0x000000000000000fULL) == 4);
     // TODO: add more tests here.
-    asm_memcpy(&d,&s,4);
-    printf("%s\n",d);
+    // asm_memcpy(&d,&s,4);
+    // printf("%s\n",d);
     
     // printf("inif\n");
-    // asm_longjmp(buf, 123);
+    asm_longjmp(buf, 123);
   } else {
-    printf("inelse\n");
+    // printf("inelse\n");
     assert(r == 123);
     printf("PASSED.\n");
   }

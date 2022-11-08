@@ -57,7 +57,7 @@ int asm_setjmp(asm_jmp_buf env) {
     "movq %%rcx,8(%[env])\n\t"
     "movq %%rsp,(%[env])\n\t"
     "movl 16(%[env]),%[ret]\n\t"
-    : [ret] "=r" (ret) 
+    : [ret] "=&r" (ret) 
     : [env] "r" (env)
     :"memory","rcx"
   ); 
@@ -73,7 +73,7 @@ void asm_longjmp(asm_jmp_buf env, int val) {
     "movq (%[env]),%%rsp\n\t"
     "movl %[val],16(%[env])\n\t"
     "jmp *(%%rcx)"
-    : [val] "+r" (val) 
+    : [val] "+&r" (val) 
     : [env] "r" (env)
     :"memory","rcx"
   ); 
