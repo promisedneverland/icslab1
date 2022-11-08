@@ -23,6 +23,6 @@ int main() {
   {
     // printf("inelse\n");
     assert(r == 123);
-    // printf("PASSED.\n");
+    printf("PASSED.\n");
   }
 }
