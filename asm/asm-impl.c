@@ -38,8 +38,6 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
     "jz end\n\t"
     "movb (%[src]),%%cl\n\t"
     "movb %%cl,(%[dest])\n\t"
-    "test %%cl, %%cl\n\t"
-    "jz end\n\t"
     "incq %[src]\n\t"
     "incq %[dest]\n\t"
     "decq %[n]\n\t"
