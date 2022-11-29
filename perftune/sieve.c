@@ -37,7 +37,7 @@ int *sieve(int n) {
    
   }
   int start,sieve_start;
-  for(int bid = 0 ; bid <= blocknum ; bid++)
+  for(int bid = 1 ; bid <= blocknum ; bid++)
   {
    start = bid * blocksize;
    for(int i = 0 ; i < cnt ; i++)
