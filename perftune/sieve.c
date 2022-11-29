@@ -61,7 +61,10 @@ int *sieve(int n) {
     for(int i = 0 ; i < cnt ; i++)
     {
       int p = primes[i];
-      sieve_start = (( start + p - 1 ) / p) * p;
+      if((( start + p - 1 ) / p) > p)
+        sieve_start = (( start + p - 1 ) / p) * p;
+      else 
+        sieve_start = p * p;
       for(int j = sieve_start ; j <= n ; j += p)
       {
         is_prime[j] = false;
