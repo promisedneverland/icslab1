@@ -48,7 +48,7 @@ int *sieve(int n) {
     {
       is_prime[j] = false;
     }
-
+   }
    
   }
 
