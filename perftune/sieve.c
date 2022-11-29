@@ -71,7 +71,10 @@ int *sieve(int n) {
   for (int i = 2; i <= n; i++)
     if (is_prime[i]) {
       *p++ = i;
+      printf("%d ",i);
     }
   *p = 0;
+
+
   return primes;
 }
