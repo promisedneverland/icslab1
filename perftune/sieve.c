@@ -14,7 +14,7 @@ int *sieve(int n) {
     is_prime[i] = true;
 
   int blocknum = n/blocksize + 1;
-  double dn = n;
+  float dn = n;
   int nsqrt = sqrt(dn);
 
   for (int i = 2; i <= n; i++) {
