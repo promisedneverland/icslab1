@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 #define N 10000000
-
+#define blocksize 100
 static bool is_prime[N];
 static int  primes[N];
 
@@ -13,9 +13,9 @@ int *sieve(int n) {
   for (int i = 0; i <= n; i++)
     is_prime[i] = true;
 
-  const int blocksize = 100;
   int blocknum = n/blocksize + 1;
-  int nsqrt = sqrt(n);
+  double dn = n;
+  int nsqrt = sqrt(dn);
 
   for (int i = 2; i <= n; i++) {
     if(is_prime[i])
