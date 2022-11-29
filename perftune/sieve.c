@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdio.h>
 #define N 10000000
-#define blocksize 100
+#define blocksize 10000
 static bool is_prime[N];
 static int  primes[N];
 
