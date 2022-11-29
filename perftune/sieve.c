@@ -6,7 +6,7 @@
 #define blocksize 100
 static bool is_prime[N];
 static int  primes[N];
-int sqrt(double n);
+double sqrt(double n);
 // int sqrt(int n)
 // {
 //   int i = 1;
