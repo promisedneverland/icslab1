@@ -43,7 +43,7 @@ int *sieve(int n) {
    for(int i = 0 ; i < cnt ; i++)
    {
     int p = primes[i];
-    sieve_start = (( start + p - 1 ) / p) * p;
+    sieve_start = max((( start + p - 1 ) / p),p) * p;
     for(int j = sieve_start ; j <= start + blocksize ; j += p)
     {
       is_prime[j] = false;
