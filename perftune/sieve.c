@@ -52,7 +52,7 @@ int *sieve(int n) {
    
   }
 
-  if(n % blocksiz != 0)
+  if(n % blocksize != 0)
   {
     start = blocknum * blocksize;
     for(int i = 0 ; i < cnt ; i++)
