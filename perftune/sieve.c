@@ -6,22 +6,22 @@
 #define blocksize 100
 static bool is_prime[N];
 static int  primes[N];
-double sqrt(double n);
-// int sqrt(int n)
-// {
-//   int i = 1;
-//   while(i*i < n)
-//     i++;
-//   return i - 1;
-// }
+
+int sqt(int n)
+{
+  int i = 1;
+  while(i*i < n)
+    i++;
+  return i - 1;
+}
 int *sieve(int n) {
   assert(n + 1 < N);
   for (int i = 0; i <= n; i++)
     is_prime[i] = true;
 
   int blocknum = n/blocksize + 1;
-  float dn = n;
-  int nsqrt = sqrt(dn);
+
+  int nsqrt = sqt(n);
 
   for (int i = 2; i <= n; i++) {
     if(is_prime[i])
